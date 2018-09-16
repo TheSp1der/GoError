@@ -1,4 +1,4 @@
-package GoError
+package goerror
 
 import (
 	// standard packages
