@@ -4,6 +4,12 @@ GoError
 
 A go interface for easily handeling error calls.
 
+Credit
+------
+
+This package uses ANSI Escape Codes from `github.com/fatih/color <https://github.com/fatih/color>`
+by `Fatih Arslan <https://github.com/fatih>`.
+
 Installation
 ------------
 
