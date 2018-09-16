@@ -1,4 +1,5 @@
-package main
+package GoError
+
 import (
 	// standard packages
 	"log" // simple logging package
