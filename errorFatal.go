@@ -1,21 +1,13 @@
 package goerror
 
 import (
-	// standard packages
-	"log" // simple logging package
-	"os"  // platform-independent interface to operating system functionality
+	"log"
+	"os"
 
-	// external packages
-	"github.com/fatih/color" // colorized outputs in terms of ANSI Escape Codes
+	"github.com/fatih/color"
 )
 
-// Fatal ...
-// -------
-// reports error on stdout and halts the program
-//
-// input: err - error output
-//
-// return:
+// Fatal reports error on stdout and halts the program
 func Fatal(err error) {
 	var (
 		Error *log.Logger // error handler
@@ -29,4 +21,11 @@ func Fatal(err error) {
 
 	Error.Println(err)
 	os.Exit(1)
+}
+
+// FatalReceiver reports error on stdout and halts the program via a blocking channel
+func FatalReceiver(err <-chan error) {
+	for {
+		Fatal(<-err)
+	}
 }

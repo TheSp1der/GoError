@@ -1,21 +1,13 @@
 package goerror
 
 import (
-	// standard packages
-	"log" // simple logging package
-	"os"  // platform-independent interface to operating system functionality
+	"log"
+	"os"
 
-	// external packages
-	"github.com/fatih/color" // colorized outputs in terms of ANSI Escape Codes
+	"github.com/fatih/color"
 )
 
-// Info ...
-// -------
-// reports info on stdout
-//
-// input: err - error output
-//
-// return:
+// Info reports info on stdout via a blocking channel
 func Info(err error) {
 	var (
 		Info *log.Logger // warning handler
@@ -28,4 +20,11 @@ func Info(err error) {
 	)
 
 	Info.Println(err)
+}
+
+// InfoReceiver reports info on stdout via a blocking channel
+func InfoReceiver(err <-chan error) {
+	for {
+		Fatal(<-err)
+	}
 }
